@@ -32,7 +32,7 @@ export const Day = ({ locale, day, onClick }: DayProps) => {
 	const getDayObject = (): DayObjectWithElement => {
 		return {
 			...day,
-			element: dayRef?.current!,
+			element: dayRef.current!,
 		}
 	}
 
