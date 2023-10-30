@@ -4,6 +4,7 @@ import { Month } from "./Month"
 import { Week } from "./Week"
 import { CALENDAR_TYPES, CalendarType } from "./utils"
 import "./Calendar.css"
+import { DayObject } from "./Day"
 
 type View = "year" | "month" | "week"
 interface CalendarProps {
@@ -11,6 +12,7 @@ interface CalendarProps {
 	calendarType?: CalendarType
 	date?: Date
 	view?: View
+	onClick?: (day: DayObject) => void
 }
 
 const Calendar = ({
@@ -18,6 +20,7 @@ const Calendar = ({
 	calendarType = CALENDAR_TYPES.ISO_8601,
 	view = "year",
 	date = new Date(),
+	onClick,
 }: CalendarProps) => {
 	const [currentView, setCurrentView] = useState(view)
 
@@ -32,15 +35,30 @@ const Calendar = ({
 			<main className="content">
 				<h2 className="year-title">{year}</h2>
 				{currentView === "year" && (
-					<Year locale={locale} calendarType={calendarType} date={date} />
+					<Year
+						locale={locale}
+						calendarType={calendarType}
+						date={date}
+						onClick={onClick}
+					/>
 				)}
 
 				{currentView === "month" && (
-					<Month locale={locale} calendarType={calendarType} date={date} />
+					<Month
+						locale={locale}
+						calendarType={calendarType}
+						date={date}
+						onClick={onClick}
+					/>
 				)}
 
 				{currentView === "week" && (
-					<Week locale={locale} calendarType={calendarType} date={date} />
+					<Week
+						locale={locale}
+						calendarType={calendarType}
+						date={date}
+						onClick={onClick}
+					/>
 				)}
 			</main>
 		</div>

@@ -1,5 +1,6 @@
+import { Day, DayObject } from "./Day"
 import { MonthHeader } from "./MonthHeader"
-import { DATE_FORMAT, MONTH } from "./utils"
+import { MONTH } from "./utils"
 import {
 	CalendarType,
 	daysToObject,
@@ -11,9 +12,10 @@ interface WeekProps {
 	locale: string
 	calendarType: CalendarType
 	date: Date
+	onClick?: (day: DayObject) => void
 }
 
-export const Week = ({ locale, calendarType, date }: WeekProps) => {
+export const Week = ({ locale, calendarType, date, onClick }: WeekProps) => {
 	const month = date.getMonth()
 	const monthText = Object.keys(MONTH)[month]
 
@@ -34,15 +36,10 @@ export const Week = ({ locale, calendarType, date }: WeekProps) => {
 
 				<div className="days">
 					{getWeek().map((day) => {
-						const dayNumber = day.date.getDate()
-						const date = day.date.toLocaleDateString(locale, DATE_FORMAT)
-						const key = `${day.date.getTime()}-${day.class}`
+						const { date: dateDay, class: dayClass } = day
+						const key = `${dateDay.getTime()}-${dayClass}`
 
-						return (
-							<div className={`day ${day.class}`} key={key} data-date={date}>
-								<p>{dayNumber}</p>
-							</div>
-						)
+						return <Day key={key} locale={locale} day={day} onClick={onClick} />
 					})}
 				</div>
 			</div>

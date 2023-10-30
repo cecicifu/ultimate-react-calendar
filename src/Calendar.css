@@ -51,7 +51,14 @@
 .day.day--today {
 	background-color: #808080;
 	color: white;
-	border-radius: 10px;
+}
+
+.day:is(.day--current-month).day--clickable {
+	cursor: pointer;
+}
+
+.day:is(.day--current-month).day--clickable:hover {
+	background-color: #cccccc;
 }
 
 @media (max-width: 1280px) {

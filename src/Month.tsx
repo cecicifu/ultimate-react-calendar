@@ -45,6 +45,7 @@ interface MonthProps {
 	calendarType: CalendarType
 	date: Date
 	month?: number
+	onClick?: (day: DayObject) => void
 }
 
 export const Month = ({
@@ -52,6 +53,7 @@ export const Month = ({
 	calendarType,
 	date,
 	month = date.getMonth(),
+	onClick,
 }: MonthProps) => {
 	const year = date.getFullYear()
 	const monthText = Object.keys(MONTH)[month]
@@ -66,10 +68,10 @@ export const Month = ({
 				{getMonthWeeks(month, year, calendarType)
 					.flat()
 					.map((day) => {
-						const { date: dateDay, class: dayClass } = day
-						const key = `${dateDay.getTime()}-${dayClass}`
+						const { date: dateDay, classNames } = day
+						const key = `${dateDay.getTime()}-${classNames[1]}`
 
-						return <Day key={key} locale={locale} day={day} />
+						return <Day key={key} locale={locale} day={day} onClick={onClick} />
 					})}
 			</div>
 		</div>

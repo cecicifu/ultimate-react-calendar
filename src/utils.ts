@@ -91,10 +91,10 @@ export const daysToObject = (currentMonth: number, day: Date) => {
 	) {
 		return {
 			date: day,
-			class:
+			classNames:
 				currentMonth === 11 && day.getMonth() === 0
-					? "day--next-month day--next-year"
-					: "day--next-month",
+					? ["day", "day--next-month", "day--next-year"]
+					: ["day", "day--next-month"],
 		}
 	}
 
@@ -105,19 +105,19 @@ export const daysToObject = (currentMonth: number, day: Date) => {
 	) {
 		return {
 			date: day,
-			class:
+			classNames:
 				currentMonth === 0 && day.getMonth() === 11
-					? "day--previous-month day--previous-year"
-					: "day--previous-month",
+					? ["day", "day--previous-month", "day--previous-year"]
+					: ["day", "day--previous-month"],
 		}
 	}
 
 	// current month or current day
 	return {
 		date: day,
-		class: isToday(day)
-			? "day--current-month day--today"
-			: "day--current-month",
+		classNames: isToday(day)
+			? ["day", "day--current-month", "day--today"]
+			: ["day", "day--current-month"],
 	}
 }
 
