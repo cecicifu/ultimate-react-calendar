@@ -3,41 +3,55 @@
 	box-sizing: border-box;
 }
 
-.calendar h2 {
+.content {
+	display: flex;
+	flex-direction: column;
+}
+
+.year-title,
+.month-title {
 	text-align: center;
+	text-transform: uppercase;
 }
 
 .year {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 30px;
-	text-align: center;
 }
 
-.month h3 {
-	text-transform: uppercase;
+.week {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
 }
 
-.month .days {
+.header {
+	display: flex;
+	justify-content: space-around;
+	font-weight: bold;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #cccccc;
+}
+
+.days {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	text-align: center;
 }
 
-.week {
-	display: flex;
-	justify-content: space-around;
-	font-weight: bold;
-	padding-bottom: 10px;
-	border-bottom: 1px solid #ccc;
-}
-
 .day.day--previous-month {
-	color: #ccc;
+	color: #cccccc;
 }
 
 .day.day--next-month {
-	color: #ccc;
+	color: #cccccc;
+}
+
+.day.day--today {
+	background-color: #808080;
+	color: white;
+	border-radius: 10px;
 }
 
 @media (max-width: 1280px) {
