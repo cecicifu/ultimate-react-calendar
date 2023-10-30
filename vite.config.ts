@@ -22,7 +22,7 @@ export default defineConfig({
 			formats: ["es"],
 		},
 		rollupOptions: {
-			external: ["react", "react-dom", "react/jsx-runtime"],
+			external: ["react", "react/jsx-runtime"],
 			input: Object.fromEntries(
 				// https://rollupjs.org/configuration-options/#input
 				glob.sync("lib/**/!(*.d).{ts,tsx}").map((file) => [
@@ -35,10 +35,6 @@ export default defineConfig({
 				])
 			),
 			output: {
-				globals: {
-					react: "React",
-					"react-dom": "ReactDOM",
-				},
 				assetFileNames: "assets/[name][extname]",
 				entryFileNames: "[name].js",
 			},
