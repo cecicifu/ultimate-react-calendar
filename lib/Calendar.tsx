@@ -1,10 +1,10 @@
 import { useState } from "react"
-import { Year } from "./Year"
-import { Month } from "./Month"
-import { Week } from "./Week"
-import { CALENDAR_TYPES, CalendarType } from "./utils"
-import "./Calendar.css"
-import { DayObject } from "./Day"
+import { Year } from "./core/Year"
+import { Month } from "./core/Month"
+import { Week } from "./core/Week"
+import { CALENDAR_TYPES, CalendarType } from "./utils/utils"
+import { DayObjectWithElement } from "./core/Day"
+import "./assets/Calendar.css"
 
 type View = "year" | "month" | "week"
 interface CalendarProps {
@@ -12,7 +12,7 @@ interface CalendarProps {
 	calendarType?: CalendarType
 	date?: Date
 	view?: View
-	onClick?: (day: DayObject) => void
+	onClick?: (day: DayObjectWithElement) => void
 }
 
 const Calendar = ({

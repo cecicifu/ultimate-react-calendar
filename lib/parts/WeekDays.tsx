@@ -1,11 +1,11 @@
-import { CALENDAR_TYPES, CalendarType } from "./utils"
+import { CALENDAR_TYPES, CalendarType } from "../utils/utils"
 
 interface WeekHeaderProps {
 	locale: string
 	calendarType: CalendarType
 }
 
-const getMonthDayNames = (locale: string, calendarType: CalendarType) => {
+const getWeekDayNames = (locale: string, calendarType: CalendarType) => {
 	const { format } = new Intl.DateTimeFormat(locale, { weekday: "narrow" })
 
 	if (
@@ -28,10 +28,10 @@ const getMonthDayNames = (locale: string, calendarType: CalendarType) => {
 }
 
 // TODO fix index key
-export const MonthHeader = ({ locale, calendarType }: WeekHeaderProps) => {
+export const WeekDays = ({ locale, calendarType }: WeekHeaderProps) => {
 	return (
 		<div className="header">
-			{getMonthDayNames(locale, calendarType).map((day, index) => {
+			{getWeekDayNames(locale, calendarType).map((day, index) => {
 				return <div key={index}>{day}</div>
 			})}
 		</div>

@@ -1,12 +1,12 @@
-import { Day, DayObject } from "./Day"
-import { MonthHeader } from "./MonthHeader"
+import { Day, DayObject, DayObjectWithElement } from "./Day"
+import { WeekDays } from "../parts/WeekDays"
 import {
 	CalendarType,
 	MONTH,
 	daysToObject,
 	getFirstDayOfWeek,
 	getWeekDays,
-} from "./utils"
+} from "../utils/utils"
 
 type Week = DayObject[]
 const NUMBER_OF_WEEKS = 6
@@ -45,7 +45,7 @@ interface MonthProps {
 	calendarType: CalendarType
 	date: Date
 	month?: number
-	onClick?: (day: DayObject) => void
+	onClick?: (day: DayObjectWithElement) => void
 }
 
 export const Month = ({
@@ -62,7 +62,7 @@ export const Month = ({
 		<div className="month" data-month={month}>
 			<h3 className="month-title">{monthText}</h3>
 
-			<MonthHeader locale={locale} calendarType={calendarType} />
+			<WeekDays locale={locale} calendarType={calendarType} />
 
 			<div className="days">
 				{getMonthWeeks(month, year, calendarType)

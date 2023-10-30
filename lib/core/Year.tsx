@@ -1,12 +1,12 @@
-import { DayObject } from "./Day"
+import { DayObjectWithElement } from "./Day"
 import { Month } from "./Month"
-import { CalendarType, MONTH } from "./utils"
+import { CalendarType, MONTH } from "../utils/utils"
 
 interface YearProps {
 	locale: string
 	calendarType: CalendarType
 	date: Date
-	onClick?: (day: DayObject) => void
+	onClick?: (day: DayObjectWithElement) => void
 }
 
 export const Year = ({ locale, calendarType, date, onClick }: YearProps) => {
