@@ -28,6 +28,8 @@ export const Week = ({
 
 		const weekDays = getWeekDays(date, firstDayOfWeek)
 
+		console.log(weekDays)
+
 		return weekDays.map((day) => daysToObject(month, day, calendarType))
 	}
 

@@ -1,4 +1,6 @@
 .day {
+	padding: 10px;
+
 	&.day--previous-month {
 		color: #cccccc;
 	}

@@ -1,0 +1,15 @@
+@font-face {
+	font-family: "Open Sans";
+	src: url(../fonts/OpenSans-VariableFont.ttf);
+}
+
+body {
+	height: 100vh;
+}
+
+* {
+	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}

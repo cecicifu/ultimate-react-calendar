@@ -1,0 +1,30 @@
+.controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 1rem 0;
+
+	.right-button,
+	.left-button {
+		border: none;
+		padding: 0.5em;
+		background: transparent;
+		cursor: pointer;
+		font-weight: bold;
+		text-transform: uppercase;
+		transition: opacity 0.2s ease-in-out;
+	}
+
+	.right-button:hover,
+	.left-button:hover {
+		opacity: 0.3;
+	}
+
+	.right-icon,
+	.left-icon {
+		height: 100%;
+		width: 24px;
+		vertical-align: middle;
+	}
+}

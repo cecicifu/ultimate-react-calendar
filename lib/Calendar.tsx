@@ -4,10 +4,11 @@ import { Month } from "./core/Month"
 import { Year } from "./core/Year"
 import { Week } from "./core/Week"
 import { YearTitle } from "./parts/YearTitle"
+import { WeekDays } from "./parts/WeekDays"
+import { Controls } from "./parts/Controls"
 import { CALENDAR_TYPES, CalendarType } from "./utils"
 import "./Calendar.css"
-import "./global.css"
-import { WeekDays } from "./parts/WeekDays"
+import "./assets/css/global.css"
 
 export type View = "year" | "month" | "week"
 export interface CalendarProps {
@@ -15,7 +16,7 @@ export interface CalendarProps {
 	className?: PropsWithoutRef<JSX.IntrinsicElements["main"]>["className"]
 	customDay?: (day: DayObject) => React.ReactNode
 	customWeekDays?: React.ReactNode
-	date?: Date
+	startDate?: Date
 	locale?: string
 	onClick?: (day: DayObjectWithElement) => void
 	view?: View
@@ -31,7 +32,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 			className = "calendar",
 			customDay,
 			customWeekDays,
-			date = new Date(),
+			startDate = new Date(),
 			locale = "en-US",
 			onClick,
 			view = "year",
@@ -39,6 +40,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 		},
 		ref
 	) => {
+		const [date, setDate] = useState(startDate)
 		const [currentView, setCurrentView] = useState<View>(view)
 
 		return (
@@ -49,7 +51,68 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 					<button onClick={() => setCurrentView("week")}>Week View</button>
 				</div>
 
-				<YearTitle date={date} />
+				<Controls
+					rightEvent={() =>
+						setDate((prevDate) => {
+							if (currentView === "year") {
+								return new Date(
+									date.getFullYear() - 1,
+									date.getMonth(),
+									date.getDate()
+								)
+							}
+
+							if (currentView === "month") {
+								return new Date(
+									date.getFullYear(),
+									date.getMonth() - 1,
+									date.getDate()
+								)
+							}
+
+							if (currentView === "week") {
+								return new Date(
+									date.getFullYear(),
+									date.getMonth(),
+									date.getDate() - 7
+								)
+							}
+
+							return prevDate
+						})
+					}
+					leftEvent={() =>
+						setDate((prevDate) => {
+							if (currentView === "year") {
+								return new Date(
+									date.getFullYear() + 1,
+									date.getMonth(),
+									date.getDate()
+								)
+							}
+
+							if (currentView === "month") {
+								return new Date(
+									date.getFullYear(),
+									date.getMonth() + 1,
+									date.getDate()
+								)
+							}
+
+							if (currentView === "week") {
+								return new Date(
+									date.getFullYear(),
+									date.getMonth(),
+									date.getDate() + 7
+								)
+							}
+
+							return prevDate
+						})
+					}
+				>
+					<YearTitle date={date} />
+				</Controls>
 
 				<div className="content">
 					{currentView === "year" && (
