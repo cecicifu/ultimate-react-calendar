@@ -1,15 +1,16 @@
-import { Day, DayObject, DayObjectWithElement } from "./Day"
-import { WeekDays } from "../parts/WeekDays"
+import { DayObject } from "../Day"
 import {
 	CalendarType,
-	MONTH,
 	daysToObject,
 	getFirstDayOfWeek,
 	getWeekDays,
-} from "../utils/utils"
+} from "../../utils"
+import "./Month.css"
+import React from "react"
+import { MonthTitle } from "../../parts/MonthTitle"
 
-type Week = DayObject[]
-const NUMBER_OF_WEEKS = 6
+export type Week = DayObject[]
+
 const getMonthWeeks = (
 	month: number,
 	year: number,
@@ -22,6 +23,8 @@ const getMonthWeeks = (
 
 	// get the first day of the week of the month
 	const firstDayOfWeek = getFirstDayOfWeek(date, calendarType)
+
+	const NUMBER_OF_WEEKS = 6
 
 	const weeks: Week[] = []
 	for (let index = 0; index < NUMBER_OF_WEEKS; index++) {
@@ -40,39 +43,33 @@ const getMonthWeeks = (
 	return weeks
 }
 
-interface MonthProps {
-	locale: string
+export interface MonthProps {
 	calendarType: CalendarType
 	date: Date
 	month?: number
-	onClick?: (day: DayObjectWithElement) => void
+	dayElement: (day: DayObject) => React.ReactNode
+	customWeekDays?: React.ReactNode
 }
 
 export const Month = ({
-	locale,
 	calendarType,
 	date,
 	month = date.getMonth(),
-	onClick,
+	customWeekDays,
+	dayElement,
 }: MonthProps) => {
 	const year = date.getFullYear()
-	const monthText = Object.keys(MONTH)[month]
 
 	return (
 		<div className="month" data-month={month}>
-			<h3 className="month-title">{monthText}</h3>
+			<MonthTitle date={date} />
 
-			<WeekDays locale={locale} calendarType={calendarType} />
+			{customWeekDays}
 
 			<div className="days">
 				{getMonthWeeks(month, year, calendarType)
 					.flat()
-					.map((day) => {
-						const { date: dateDay, classNames } = day
-						const key = `${dateDay.getTime()}-${classNames[1]}`
-
-						return <Day key={key} locale={locale} day={day} onClick={onClick} />
-					})}
+					.map((day) => dayElement(day))}
 			</div>
 		</div>
 	)

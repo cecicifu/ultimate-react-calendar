@@ -1,5 +1,6 @@
 import { useRef } from "react"
-import { DATE_FORMAT } from "../utils/utils"
+import { DATE_FORMAT } from "../../utils"
+import "./Day.css"
 
 export type DayObject = {
 	date: Date
@@ -10,7 +11,7 @@ export type DayObjectWithElement = DayObject & {
 	element: HTMLDivElement
 }
 
-interface DayProps {
+export interface DayProps {
 	locale: string
 	day: DayObject
 	onClick?: (day: DayObjectWithElement) => void

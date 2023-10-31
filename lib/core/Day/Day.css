@@ -1,0 +1,20 @@
+.day.day--previous-month {
+	color: #cccccc;
+}
+
+.day.day--next-month {
+	color: #cccccc;
+}
+
+.day.day--today {
+	background-color: #808080;
+	color: white;
+}
+
+.day:is(.day--current-month).day--clickable {
+	cursor: pointer;
+}
+
+.day:is(.day--current-month).day--clickable:hover {
+	background-color: #cccccc;
+}
