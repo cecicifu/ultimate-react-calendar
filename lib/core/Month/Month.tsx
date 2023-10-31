@@ -62,7 +62,7 @@ export const Month = ({
 
 	return (
 		<div className="month" data-month={month}>
-			<MonthTitle date={date} />
+			<MonthTitle month={month} />
 
 			{customWeekDays}
 

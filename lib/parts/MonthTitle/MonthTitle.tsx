@@ -2,12 +2,13 @@ import { MONTH } from "../../utils"
 import "./MonthTitle.css"
 
 export interface MonthTitleProps {
-	date: Date
+	date?: Date
+	month?: number
 }
 
-export const MonthTitle = ({ date }: MonthTitleProps) => {
-	const month = date.getMonth()
-	const monthText = Object.keys(MONTH)[month]
+export const MonthTitle = ({ date = new Date(), month }: MonthTitleProps) => {
+	const dateMonth = date.getMonth()
+	const monthText = Object.keys(MONTH)[month ?? dateMonth]
 
 	return <h3 className="month-title">{monthText}</h3>
 }
