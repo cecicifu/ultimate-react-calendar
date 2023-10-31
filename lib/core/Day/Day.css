@@ -1,20 +1,26 @@
-.day.day--previous-month {
-	color: #cccccc;
-}
+.day {
+	&.day--previous-month {
+		color: #cccccc;
+	}
 
-.day.day--next-month {
-	color: #cccccc;
-}
+	&.day--next-month {
+		color: #cccccc;
+	}
 
-.day.day--today {
-	background-color: #808080;
-	color: white;
-}
+	&.day--current-month.day--today {
+		background-color: #808080;
+		color: white;
+	}
 
-.day:is(.day--current-month).day--clickable {
-	cursor: pointer;
-}
+	&.day--weekend {
+		background-color: #ebebeb;
+	}
 
-.day:is(.day--current-month).day--clickable:hover {
-	background-color: #cccccc;
+	&:is(.day--current-month).day--clickable {
+		cursor: pointer;
+	}
+
+	&:is(.day--current-month).day--clickable:hover {
+		background-color: #cccccc;
+	}
 }

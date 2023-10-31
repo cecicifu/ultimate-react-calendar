@@ -1,3 +1,5 @@
+import { DayObject } from "./core/Day"
+
 export const DATE_FORMAT: Intl.DateTimeFormatOptions = Object.freeze({
 	day: "2-digit",
 	month: "2-digit",
@@ -83,52 +85,81 @@ export function getWeekDays(date: Date, firstDayOfWeek: number) {
 	return days
 }
 
-export const daysToObject = (currentMonth: number, day: Date) => {
-	// previous month or previous year
-	if (
-		currentMonth === day.getMonth() - 1 ||
-		(currentMonth === 11 && day.getMonth() === 0)
-	) {
-		return {
-			date: day,
-			classNames:
-				currentMonth === 11 && day.getMonth() === 0
-					? ["day", "day--next-month", "day--next-year"]
-					: ["day", "day--next-month"],
-		}
-	}
-
-	// next month or next year
-	if (
-		currentMonth === day.getMonth() + 1 ||
-		(currentMonth === 0 && day.getMonth() === 11)
-	) {
-		return {
-			date: day,
-			classNames:
-				currentMonth === 0 && day.getMonth() === 11
-					? ["day", "day--previous-month", "day--previous-year"]
-					: ["day", "day--previous-month"],
-		}
-	}
-
-	// current month or current day
-	return {
-		date: day,
-		classNames: isToday(day)
-			? ["day", "day--current-month", "day--today"]
-			: ["day", "day--current-month"],
-	}
-}
-
-export const isToday = (day: Date) => {
+export const daysToObject = (
+	currentMonth: number,
+	day: Date,
+	calendarType: CalendarType
+) => {
 	const currentDate = new Date()
 
-	return (
+	const dayObject: DayObject = {
+		date: day,
+		classNames: ["day"],
+	}
+
+	const isPreviousMonth = currentMonth === day.getMonth() + 1
+	const isNextMonth = currentMonth === day.getMonth() - 1
+	const isPreviousYear = currentMonth === 0 && day.getMonth() === 11
+	const isNextYear = currentMonth === 11 && day.getMonth() === 0
+
+	const isWeekend =
+		calendarType === CALENDAR_TYPES.ISLAMIC ||
+		calendarType === CALENDAR_TYPES.HEBREW
+			? day.getDay() === 5 || day.getDay() === 6
+			: day.getDay() === 0 || day.getDay() === 6
+
+	const isToday =
 		day.getDate() === currentDate.getDate() &&
 		day.getMonth() === currentDate.getMonth() &&
 		day.getFullYear() === currentDate.getFullYear()
-	)
+
+	if (isNextMonth || isNextYear) {
+		dayObject.classNames.push("day--next-month")
+
+		if (isNextYear) {
+			dayObject.classNames.push("day--next-year")
+		}
+
+		if (isWeekend) {
+			dayObject.classNames.push("day--weekend")
+		}
+
+		if (isToday) {
+			dayObject.classNames.push("day--today")
+		}
+
+		return dayObject
+	}
+
+	if (isPreviousMonth || isPreviousYear) {
+		dayObject.classNames.push("day--previous-month")
+
+		if (isPreviousYear) {
+			dayObject.classNames.push("day--previous-year")
+		}
+
+		if (isWeekend) {
+			dayObject.classNames.push("day--weekend")
+		}
+
+		if (isToday) {
+			dayObject.classNames.push("day--today")
+		}
+
+		return dayObject
+	}
+
+	dayObject.classNames.push("day--current-month")
+
+	if (isWeekend) {
+		dayObject.classNames.push("day--weekend")
+	}
+
+	if (isToday) {
+		dayObject.classNames.push("day--today")
+	}
+
+	return dayObject
 }
 
 export const getWeekNumber = (date: Date) => {

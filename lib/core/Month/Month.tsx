@@ -31,7 +31,7 @@ const getMonthWeeks = (
 		const weekDays = getWeekDays(date, firstDayOfWeek)
 
 		const weekDaysObject: DayObject[] = weekDays.map((day) =>
-			daysToObject(month, day)
+			daysToObject(month, day, calendarType)
 		)
 
 		weeks.push(weekDaysObject)

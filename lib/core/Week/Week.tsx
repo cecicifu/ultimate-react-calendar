@@ -28,7 +28,7 @@ export const Week = ({
 
 		const weekDays = getWeekDays(date, firstDayOfWeek)
 
-		return weekDays.map((day) => daysToObject(month, day))
+		return weekDays.map((day) => daysToObject(month, day, calendarType))
 	}
 
 	return (
