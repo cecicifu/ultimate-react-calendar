@@ -5,7 +5,7 @@ import {
 	getFirstDayOfWeek,
 	getWeekDays,
 	getWeekNumber,
-} from "../../utils"
+} from "../../utils/date"
 import "./Week.css"
 
 export type Week = DayObject[]

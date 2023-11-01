@@ -6,7 +6,7 @@ import {
 	daysToObject,
 	getFirstDayOfWeek,
 	getWeekDays,
-} from "../../utils"
+} from "../../utils/date"
 import { MonthTitle } from "../../parts/MonthTitle"
 import "./Month.css"
 

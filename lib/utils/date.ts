@@ -1,4 +1,4 @@
-import { DayObject } from "./core/Day"
+import { DayObject } from "../core/Day"
 
 export const DATE_FORMAT: Intl.DateTimeFormatOptions = Object.freeze({
 	day: "2-digit",

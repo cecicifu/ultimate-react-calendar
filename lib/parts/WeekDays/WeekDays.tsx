@@ -1,4 +1,4 @@
-import { CALENDAR_TYPES, CalendarType } from "../../utils"
+import { CALENDAR_TYPES, CalendarType } from "../../utils/date"
 import "./WeekDays.css"
 
 const getWeekDayNames = (

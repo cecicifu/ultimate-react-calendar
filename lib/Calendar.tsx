@@ -1,12 +1,11 @@
 import { PropsWithoutRef, forwardRef, useState } from "react"
-import { Day, DayObject, DayObjectWithElement } from "./core/Day"
-import { Month } from "./core/Month"
-import { Year } from "./core/Year"
-import { Week } from "./core/Week"
+import { DayObject, DayObjectWithElement } from "./core/Day"
 import { YearTitle } from "./parts/YearTitle"
-import { WeekDays } from "./parts/WeekDays"
 import { Controls } from "./parts/Controls"
-import { CALENDAR_TYPES, CalendarType } from "./utils"
+import { CALENDAR_TYPES, CalendarType } from "./utils/date"
+import { YearView } from "./views/YearView"
+import { MonthView } from "./views/MonthView"
+import { WeekView } from "./views/WeekView"
 import "./Calendar.css"
 import "./assets/css/global.css"
 
@@ -57,121 +56,38 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 
 				<div className="content">
 					{currentView === "year" && (
-						<Year
+						<YearView
+							calendarType={calendarType}
+							customDay={customDay}
+							customWeekDays={customWeekDays}
 							date={date}
-							monthElement={(month) => {
-								const monthNumber = month + 1
-
-								return (
-									<Month
-										key={monthNumber}
-										calendarType={calendarType}
-										month={month}
-										date={date}
-										customWeekDays={
-											customWeekDays ?? (
-												<WeekDays
-													locale={locale}
-													calendarType={calendarType}
-													format={weekDayFormat}
-												/>
-											)
-										}
-										weekElement={(week) => {
-											return (
-												<Week
-													key={week[0].date.getTime()}
-													calendarType={calendarType}
-													week={week}
-													date={date}
-													dayElement={(day) => {
-														const { date: dateDay, classNames } = day
-														const key = `${dateDay.getTime()}-${classNames[1]}`
-
-														if (customDay) return customDay(day)
-
-														return (
-															<Day
-																key={key}
-																locale={locale}
-																day={day}
-																onClick={onClick}
-															/>
-														)
-													}}
-												/>
-											)
-										}}
-									/>
-								)
-							}}
+							locale={locale}
+							onClick={onClick}
+							weekDayFormat={weekDayFormat}
 						/>
 					)}
 
 					{currentView === "month" && (
-						<Month
+						<MonthView
 							calendarType={calendarType}
+							customDay={customDay}
+							customWeekDays={customWeekDays}
 							date={date}
-							customWeekDays={
-								customWeekDays ?? (
-									<WeekDays
-										locale={locale}
-										calendarType={calendarType}
-										format={weekDayFormat}
-									/>
-								)
-							}
-							weekElement={(week) => {
-								return (
-									<Week
-										key={week[0].date.getTime()}
-										calendarType={calendarType}
-										week={week}
-										date={date}
-										dayElement={(day) => {
-											const { date: dateDay, classNames } = day
-											const key = `${dateDay.getTime()}-${classNames[1]}`
-
-											if (customDay) return customDay(day)
-
-											return (
-												<Day
-													key={key}
-													locale={locale}
-													day={day}
-													onClick={onClick}
-												/>
-											)
-										}}
-									/>
-								)
-							}}
+							locale={locale}
+							onClick={onClick}
+							weekDayFormat={weekDayFormat}
 						/>
 					)}
 
 					{currentView === "week" && (
-						<Week
+						<WeekView
 							calendarType={calendarType}
+							customDay={customDay}
+							customWeekDays={customWeekDays}
 							date={date}
-							customWeekDays={
-								customWeekDays ?? (
-									<WeekDays
-										locale={locale}
-										calendarType={calendarType}
-										format={weekDayFormat}
-									/>
-								)
-							}
-							dayElement={(day) => {
-								const { date: dateDay, classNames } = day
-								const key = `${dateDay.getTime()}-${classNames[1]}`
-
-								if (customDay) return customDay(day)
-
-								return (
-									<Day key={key} locale={locale} day={day} onClick={onClick} />
-								)
-							}}
+							locale={locale}
+							onClick={onClick}
+							weekDayFormat={weekDayFormat}
 						/>
 					)}
 				</div>
