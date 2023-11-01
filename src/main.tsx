@@ -5,6 +5,6 @@ import Calendar from "../lib/Calendar"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
 	<React.StrictMode>
-		<Calendar onClick={(day) => console.log(day)} />
+		<Calendar onDayClick={(day) => console.log(day)} />
 	</React.StrictMode>
 )

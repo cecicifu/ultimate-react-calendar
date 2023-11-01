@@ -11,7 +11,7 @@ export interface WeekViewProps {
 	date: Date
 	locale: string
 	monthFormat: Intl.DateTimeFormatOptions["month"]
-	onClick?: (day: DayObjectWithElement) => void
+	onDayClick?: (day: DayObjectWithElement) => void
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
 }
 
@@ -22,7 +22,7 @@ export const WeekView = ({
 	date,
 	locale,
 	monthFormat,
-	onClick,
+	onDayClick,
 	weekDayFormat,
 }: WeekViewProps) => {
 	return (
@@ -51,7 +51,9 @@ export const WeekView = ({
 
 				if (customDay) return customDay(day)
 
-				return <Day key={key} locale={locale} day={day} onClick={onClick} />
+				return (
+					<Day key={key} locale={locale} day={day} onDayClick={onDayClick} />
+				)
 			}}
 		/>
 	)

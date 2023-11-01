@@ -12,7 +12,7 @@ export interface MonthViewProps {
 	date: Date
 	locale: string
 	monthFormat: Intl.DateTimeFormatOptions["month"]
-	onClick?: (day: DayObjectWithElement) => void
+	onDayClick?: (day: DayObjectWithElement) => void
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
 }
 
@@ -23,7 +23,7 @@ export const MonthView = ({
 	date,
 	locale,
 	monthFormat,
-	onClick,
+	onDayClick,
 	weekDayFormat,
 }: MonthViewProps) => {
 	return (
@@ -60,7 +60,12 @@ export const MonthView = ({
 							if (customDay) return customDay(day)
 
 							return (
-								<Day key={key} locale={locale} day={day} onClick={onClick} />
+								<Day
+									key={key}
+									locale={locale}
+									day={day}
+									onDayClick={onDayClick}
+								/>
 							)
 						}}
 					/>

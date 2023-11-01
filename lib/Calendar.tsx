@@ -21,7 +21,7 @@ export interface CalendarProps {
 	startDate?: Date
 	locale?: string
 	monthFormat?: Intl.DateTimeFormatOptions["month"]
-	onClick?: (day: DayObjectWithElement) => void
+	onDayClick?: (day: DayObjectWithElement) => void
 	view?: View
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
 }
@@ -38,7 +38,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 			startDate = new Date(),
 			locale = getNavigatorLocale() ?? "en-US",
 			monthFormat = "long",
-			onClick,
+			onDayClick,
 			view = "year",
 			weekDayFormat = "narrow",
 		},
@@ -70,7 +70,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							date={date}
 							locale={locale}
 							monthFormat={monthFormat}
-							onClick={onClick}
+							onDayClick={onDayClick}
 							weekDayFormat={weekDayFormat}
 						/>
 					)}
@@ -83,7 +83,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							date={date}
 							locale={locale}
 							monthFormat={monthFormat}
-							onClick={onClick}
+							onDayClick={onDayClick}
 							weekDayFormat={weekDayFormat}
 						/>
 					)}
@@ -96,7 +96,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							date={date}
 							locale={locale}
 							monthFormat={monthFormat}
-							onClick={onClick}
+							onDayClick={onDayClick}
 							weekDayFormat={weekDayFormat}
 						/>
 					)}

@@ -13,7 +13,7 @@ export interface YearViewProps {
 	date: Date
 	locale: string
 	monthFormat: Intl.DateTimeFormatOptions["month"]
-	onClick?: (day: DayObjectWithElement) => void
+	onDayClick?: (day: DayObjectWithElement) => void
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
 }
 
@@ -24,7 +24,7 @@ export const YearView = ({
 	date,
 	locale,
 	monthFormat,
-	onClick,
+	onDayClick,
 	weekDayFormat,
 }: YearViewProps) => {
 	return (
@@ -73,7 +73,7 @@ export const YearView = ({
 												key={key}
 												locale={locale}
 												day={day}
-												onClick={onClick}
+												onDayClick={onDayClick}
 											/>
 										)
 									}}

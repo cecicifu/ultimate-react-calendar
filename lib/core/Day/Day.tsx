@@ -16,10 +16,10 @@ export type DayObjectWithElement = DayObject & {
 export interface DayProps {
 	locale: string
 	day: DayObject
-	onClick?: (day: DayObjectWithElement) => void
+	onDayClick?: (day: DayObjectWithElement) => void
 }
 
-export const Day = ({ locale, day, onClick }: DayProps) => {
+export const Day = ({ locale, day, onDayClick }: DayProps) => {
 	const { date: dateDay, classNames } = day
 
 	const dayRef = useRef<HTMLDivElement>(null)
@@ -27,7 +27,7 @@ export const Day = ({ locale, day, onClick }: DayProps) => {
 	const dayNumber = dateDay.getDate()
 	const dateString = dateDay.toLocaleDateString(locale, DATE_FORMAT)
 
-	const isClickable = onClick && classNames.includes("day--current-month")
+	const isClickable = onDayClick && classNames.includes("day--current-month")
 
 	const classNamesStr = classNames.join(" ")
 	const clickableClass = isClickable ? " day--clickable" : ""
@@ -45,7 +45,7 @@ export const Day = ({ locale, day, onClick }: DayProps) => {
 			className={`${classNamesStr}${clickableClass}`}
 			key={`${dateDay.getTime()}-${classNames[1]}`}
 			data-date={dateString}
-			onClick={() => isClickable && onClick(getDayObject())}
+			onClick={() => isClickable && onDayClick(getDayObject())}
 		>
 			<p>{dayNumber}</p>
 		</div>
