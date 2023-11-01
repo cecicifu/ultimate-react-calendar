@@ -1,14 +1,16 @@
+import "./Month.css"
+
 import React from "react"
-import { Week } from "../Week"
-import { DayObject } from "../Day"
+
+import { MonthTitle } from "../../parts/MonthTitle"
 import {
 	CalendarType,
 	daysToObject,
 	getFirstDayOfWeek,
 	getWeekDays,
 } from "../../utils/date"
-import { MonthTitle } from "../../parts/MonthTitle"
-import "./Month.css"
+import { DayObject } from "../Day"
+import { Week } from "../Week"
 
 const getMonthWeeks = (
 	month: number,

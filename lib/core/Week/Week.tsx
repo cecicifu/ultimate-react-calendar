@@ -1,4 +1,5 @@
-import { DayObject } from "../Day"
+import "./Week.css"
+
 import {
 	CalendarType,
 	daysToObject,
@@ -6,7 +7,7 @@ import {
 	getWeekDays,
 	getWeekNumber,
 } from "../../utils/date"
-import "./Week.css"
+import { DayObject } from "../Day"
 
 export type Week = DayObject[]
 export interface WeekProps {

@@ -1,5 +1,6 @@
-import { MONTH } from "../../utils/date"
 import "./Year.css"
+
+import { MONTH } from "../../utils/date"
 
 export interface YearProps {
 	date: Date

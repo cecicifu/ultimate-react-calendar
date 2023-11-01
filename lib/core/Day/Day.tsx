@@ -1,6 +1,8 @@
-import { useRef } from "react"
-import { DATE_FORMAT } from "../../utils/date"
 import "./Day.css"
+
+import { useRef } from "react"
+
+import { DATE_FORMAT } from "../../utils/date"
 
 export type DayObject = {
 	date: Date

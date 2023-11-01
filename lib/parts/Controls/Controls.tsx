@@ -1,7 +1,8 @@
+import "./Controls.css"
+
 import { View } from "../../Calendar"
 import { LeftIcon } from "./LeftIcon"
 import { RightIcon } from "./RightIcon"
-import "./Controls.css"
 
 export interface ControlsProps {
 	setDate: React.Dispatch<React.SetStateAction<Date>>

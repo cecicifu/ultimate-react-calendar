@@ -1,13 +1,15 @@
-import { PropsWithoutRef, forwardRef, useState } from "react"
-import { DayObject, DayObjectWithElement } from "./core/Day"
-import { YearTitle } from "./parts/YearTitle"
-import { Controls } from "./parts/Controls"
-import { CALENDAR_TYPES, CalendarType } from "./utils/date"
-import { YearView } from "./views/YearView"
-import { MonthView } from "./views/MonthView"
-import { WeekView } from "./views/WeekView"
 import "./Calendar.css"
 import "./assets/css/global.css"
+
+import { forwardRef, PropsWithoutRef, useState } from "react"
+
+import { DayObject, DayObjectWithElement } from "./core/Day"
+import { Controls } from "./parts/Controls"
+import { YearTitle } from "./parts/YearTitle"
+import { CALENDAR_TYPES, CalendarType } from "./utils/date"
+import { MonthView } from "./views/MonthView"
+import { WeekView } from "./views/WeekView"
+import { YearView } from "./views/YearView"
 
 export type View = "year" | "month" | "week"
 export interface CalendarProps {
