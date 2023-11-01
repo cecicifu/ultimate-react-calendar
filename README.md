@@ -8,8 +8,7 @@ The most complete React calendar for everyone.
 
 ## Requirements
 
-React >= 18.2.x
-React DOM >= 18.2.x
+- React >= 18.2.x
 
 ## Installation
 
