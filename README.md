@@ -1,6 +1,6 @@
 # Ultimate React Calendar
 
-The most complete React calendar for everyone.
+The most complete React calendar for everyone without dependencies.
 
 ![Screenshot 2023-11-01 233026](https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/aacf7ea1-fa85-4520-b0db-2f5cad0ec708)
 
