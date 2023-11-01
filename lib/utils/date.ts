@@ -34,24 +34,24 @@ export function getFirstDayOfWeek(
 	date: Date,
 	calendarType: CalendarType = CALENDAR_TYPES.ISO_8601
 ) {
-	const weekday = date.getDay()
+	const dayOfTheWeek = date.getDay()
 
 	switch (calendarType) {
 		case CALENDAR_TYPES.ISO_8601:
 			// Shifts days of the week so that Monday is 0, Sunday is 6
-			return (weekday + 6) % 7
+			return (dayOfTheWeek + 6) % 7
 		case CALENDAR_TYPES.ISLAMIC:
-			return (weekday + 1) % 7
+			return (dayOfTheWeek + 1) % 7
 		case CALENDAR_TYPES.HEBREW:
 		case CALENDAR_TYPES.GREGORY:
-			return weekday
+			return dayOfTheWeek
 		default:
 			throw new Error("Unsupported calendar type.")
 	}
 }
 
 export type Days = Date[]
-export function getWeekDays(date: Date, firstDayOfWeek: number) {
+export function getDaysOfTheWeek(date: Date, firstDayOfWeek: number) {
 	// TODO check if the timezone may cause issues
 
 	const days: Days = []
