@@ -1,5 +1,5 @@
 {
-	"name": "calendar",
+	"name": "ultimate-react-calendar",
 	"version": "1.0.0",
 	"type": "module",
 	"main": "dist/Calendar.js",
