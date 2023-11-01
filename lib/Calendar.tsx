@@ -12,19 +12,19 @@ import { MonthView } from "./views/MonthView"
 import { WeekView } from "./views/WeekView"
 import { YearView } from "./views/YearView"
 
-export type View = "year" | "month" | "week"
+export type CalendarView = "year" | "month" | "week"
 export interface CalendarProps {
 	calendarType?: CalendarType
 	className?: PropsWithoutRef<JSX.IntrinsicElements["main"]>["className"]
 	customDay?: (day: DayObject) => React.ReactNode
-	customWeekDays?: React.ReactNode
-	startDate?: Date
+	customDaysOfTheWeek?: React.ReactNode
+	initialDate?: Date
 	locale?: string
-	monthFormat?: Intl.DateTimeFormatOptions["month"]
+	formatMonth?: Intl.DateTimeFormatOptions["month"]
 	onDayClick?: (day: DayObjectWithElement) => void
 	showNonCurrentDates?: boolean
-	view?: View
-	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
+	calendarView?: CalendarView
+	formatDaysOfTheWeek?: Intl.DateTimeFormatOptions["weekday"]
 }
 
 export type Ref = HTMLElement
@@ -35,49 +35,54 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 			calendarType = CALENDAR_TYPES.ISO_8601,
 			className,
 			customDay,
-			customWeekDays,
-			startDate = new Date(),
+			customDaysOfTheWeek,
+			initialDate = new Date(),
 			locale = getNavigatorLocale() ?? "en-US",
-			monthFormat = "long",
+			formatMonth = "long",
 			onDayClick,
 			showNonCurrentDates = true,
-			view = "year",
-			weekDayFormat = "narrow",
+			calendarView = "year",
+			formatDaysOfTheWeek = "narrow",
 		},
 		ref
 	) => {
-		const [date, setDate] = useState(startDate)
-		const [currentView, setCurrentView] = useState<View>(view)
+		const [date, setDate] = useState(initialDate)
+		const [currentCalendarView, setCurrentCalendarView] =
+			useState<CalendarView>(calendarView)
 
 		const calendarClassnames = [
 			"calendar",
-			`${currentView}-view`,
+			`${currentCalendarView}-view`,
 			className,
 		].join(" ")
 
 		return (
 			<main ref={ref} className={calendarClassnames}>
-				<Controls setDate={setDate} date={date} currentView={currentView}>
+				<Controls
+					setDate={setDate}
+					date={date}
+					currentView={currentCalendarView}
+				>
 					<YearTitle date={date} />
 				</Controls>
 
 				<div className="buttons">
 					<div className="views">
 						<button
-							className={currentView === "year" ? "view-selected" : ""}
-							onClick={() => setCurrentView("year")}
+							className={currentCalendarView === "year" ? "view-selected" : ""}
+							onClick={() => setCurrentCalendarView("year")}
 						>
 							Year View
 						</button>
 						<button
-							className={currentView === "month" ? "view-selected" : ""}
-							onClick={() => setCurrentView("month")}
+							className={currentCalendarView === "month" ? "view-selected" : ""}
+							onClick={() => setCurrentCalendarView("month")}
 						>
 							Month View
 						</button>
 						<button
-							className={currentView === "week" ? "view-selected" : ""}
-							onClick={() => setCurrentView("week")}
+							className={currentCalendarView === "week" ? "view-selected" : ""}
+							onClick={() => setCurrentCalendarView("week")}
 						>
 							Week View
 						</button>
@@ -89,45 +94,45 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 				</div>
 
 				<div className="content">
-					{currentView === "year" && (
+					{currentCalendarView === "year" && (
 						<YearView
 							calendarType={calendarType}
 							customDay={customDay}
-							customWeekDays={customWeekDays}
-							startDate={date}
+							customDaysOfTheWeek={customDaysOfTheWeek}
+							initialDate={date}
 							locale={locale}
-							monthFormat={monthFormat}
+							formatMonth={formatMonth}
 							onDayClick={onDayClick}
 							showNonCurrentDates={showNonCurrentDates}
-							weekDayFormat={weekDayFormat}
+							formatDaysOfTheWeek={formatDaysOfTheWeek}
 						/>
 					)}
 
-					{currentView === "month" && (
+					{currentCalendarView === "month" && (
 						<MonthView
 							calendarType={calendarType}
 							customDay={customDay}
-							customWeekDays={customWeekDays}
-							startDate={date}
+							customDaysOfTheWeek={customDaysOfTheWeek}
+							initialDate={date}
 							locale={locale}
-							monthFormat={monthFormat}
+							formatMonth={formatMonth}
 							onDayClick={onDayClick}
 							showNonCurrentDates={showNonCurrentDates}
-							weekDayFormat={weekDayFormat}
+							formatDaysOfTheWeek={formatDaysOfTheWeek}
 						/>
 					)}
 
-					{currentView === "week" && (
+					{currentCalendarView === "week" && (
 						<WeekView
 							calendarType={calendarType}
 							customDay={customDay}
-							customWeekDays={customWeekDays}
-							startDate={date}
+							customDaysOfTheWeek={customDaysOfTheWeek}
+							initialDate={date}
 							locale={locale}
-							monthFormat={monthFormat}
+							formatMonth={formatMonth}
 							onDayClick={onDayClick}
 							showNonCurrentDates={showNonCurrentDates}
-							weekDayFormat={weekDayFormat}
+							formatDaysOfTheWeek={formatDaysOfTheWeek}
 						/>
 					)}
 				</div>

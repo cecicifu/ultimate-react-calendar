@@ -5,8 +5,8 @@ import React from "react"
 import {
 	CalendarType,
 	daysToObject,
+	getDaysOfTheWeek,
 	getFirstDayOfWeek,
-	getWeekDays,
 } from "../../utils/date"
 import { DayObject } from "../Day"
 import { Week } from "../Week"
@@ -28,13 +28,13 @@ const getMonthWeeks = (
 
 	const weeks: Week[] = []
 	for (let index = 0; index < NUMBER_OF_WEEKS; index++) {
-		const weekDays = getWeekDays(date, firstDayOfWeek)
+		const daysOfTheWeek = getDaysOfTheWeek(date, firstDayOfWeek)
 
-		const weekDaysObject: DayObject[] = weekDays.map((day) =>
+		const daysOfTheWeekObject: DayObject[] = daysOfTheWeek.map((day) =>
 			daysToObject(month, day, calendarType)
 		)
 
-		weeks.push(weekDaysObject)
+		weeks.push(daysOfTheWeekObject)
 
 		// increment for the next week
 		date.setDate(date.getDate() + 7)
@@ -49,7 +49,7 @@ export interface MonthProps {
 	monthName?: React.ReactNode
 	month?: number
 	weekElement: (day: Week) => React.ReactNode
-	customWeekDays?: React.ReactNode
+	customDaysOfTheWeek?: React.ReactNode
 }
 
 export const Month = ({
@@ -57,7 +57,7 @@ export const Month = ({
 	date,
 	monthName,
 	month = date.getMonth(),
-	customWeekDays,
+	customDaysOfTheWeek,
 	weekElement,
 }: MonthProps) => {
 	const year = date.getFullYear()
@@ -66,7 +66,7 @@ export const Month = ({
 		<div className="month" data-month={month}>
 			{monthName}
 
-			{customWeekDays}
+			{customDaysOfTheWeek}
 
 			<div className="weeks">
 				{getMonthWeeks(month, year, calendarType).map((week) =>

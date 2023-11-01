@@ -1,14 +1,14 @@
-import "./WeekDays.css"
+import "./DaysOfTheWeek.css"
 
 import { CALENDAR_TYPES, CalendarType } from "../../utils/date"
 
-const getWeekDayNames = (
+const getDaysOfTheWeek = (
 	locale: string,
 	calendarType: CalendarType,
-	weekDayFormat: Intl.DateTimeFormatOptions["weekday"]
+	formatDaysOfTheWeek: Intl.DateTimeFormatOptions["weekday"]
 ) => {
 	const { format: abbrFormat } = new Intl.DateTimeFormat(locale, {
-		weekday: weekDayFormat,
+		weekday: formatDaysOfTheWeek,
 	})
 
 	const { format: fullNameFormat } = new Intl.DateTimeFormat(locale, {
@@ -49,28 +49,28 @@ const getWeekDayNames = (
 	})
 }
 
-export interface WeekHeaderProps {
+export interface DaysOfTheWeekProps {
 	locale: string
 	calendarType: CalendarType
 	format: Intl.DateTimeFormatOptions["weekday"]
 }
 
 // TODO fix index key
-export const WeekDays = ({
+export const DaysOfTheWeek = ({
 	locale,
 	calendarType,
-	format: weekDayFormat,
-}: WeekHeaderProps) => {
+	format: formatDaysOfTheWeek,
+}: DaysOfTheWeekProps) => {
 	return (
 		<div className="header">
-			{getWeekDayNames(locale, calendarType, weekDayFormat).map(
+			{getDaysOfTheWeek(locale, calendarType, formatDaysOfTheWeek).map(
 				(day, index) => {
 					return (
 						<abbr
 							key={index}
 							title={day.fullName}
 							aria-label={day.fullName}
-							className="weekday"
+							className="dayOfTheWeek"
 						>
 							{day.abbrName}
 						</abbr>
