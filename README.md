@@ -4,8 +4,11 @@ The most complete React calendar for everyone.
 
 ![Screenshot 2023-11-01 191824](https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/19d52583-3a24-415c-b669-1ea1d58ff7e2)
 
-
 ---
+
+## Requirements
+
+React >= 18.2.x
 
 ## Installation
 
@@ -57,6 +60,6 @@ import { YearView, MonthView, WeekView } from "ultimate-react-calendar"
 | view                | Options available: `"year"`, `"month"` and `"year"`.                                                                          | `"year"`                                                |
 | weekDayFormat       | Format in which the weekdays will be displayed. Options available: `"long"`, `"narrow"` and `"short"`.                        | `"narrow"`                                              |
 
-
 ## License
+
 [MIT](https://github.com/cecicifu/ultimate-react-calendar/blob/main/LICENSE) License.
