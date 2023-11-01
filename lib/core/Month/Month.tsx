@@ -1,3 +1,5 @@
+import React from "react"
+import { Week } from "../Week"
 import { DayObject } from "../Day"
 import {
 	CalendarType,
@@ -5,11 +7,8 @@ import {
 	getFirstDayOfWeek,
 	getWeekDays,
 } from "../../utils"
-import "./Month.css"
-import React from "react"
 import { MonthTitle } from "../../parts/MonthTitle"
-
-export type Week = DayObject[]
+import "./Month.css"
 
 const getMonthWeeks = (
 	month: number,
@@ -47,7 +46,7 @@ export interface MonthProps {
 	calendarType: CalendarType
 	date: Date
 	month?: number
-	dayElement: (day: DayObject) => React.ReactNode
+	weekElement: (day: Week) => React.ReactNode
 	customWeekDays?: React.ReactNode
 }
 
@@ -56,7 +55,7 @@ export const Month = ({
 	date,
 	month = date.getMonth(),
 	customWeekDays,
-	dayElement,
+	weekElement,
 }: MonthProps) => {
 	const year = date.getFullYear()
 
@@ -66,10 +65,10 @@ export const Month = ({
 
 			{customWeekDays}
 
-			<div className="days">
-				{getMonthWeeks(month, year, calendarType)
-					.flat()
-					.map((day) => dayElement(day))}
+			<div className="weeks">
+				{getMonthWeeks(month, year, calendarType).map((week) =>
+					weekElement(week)
+				)}
 			</div>
 		</div>
 	)

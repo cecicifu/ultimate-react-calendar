@@ -8,7 +8,7 @@ export type DayObject = {
 }
 
 export type DayObjectWithElement = DayObject & {
-	element: HTMLDivElement
+	element?: HTMLDivElement
 }
 
 export interface DayProps {
@@ -33,7 +33,7 @@ export const Day = ({ locale, day, onClick }: DayProps) => {
 	const getDayObject = (): DayObjectWithElement => {
 		return {
 			...day,
-			element: dayRef.current!,
+			element: dayRef.current ? dayRef.current : undefined,
 		}
 	}
 

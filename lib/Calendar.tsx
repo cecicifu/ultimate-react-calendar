@@ -51,66 +51,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 					<button onClick={() => setCurrentView("week")}>Week View</button>
 				</div>
 
-				<Controls
-					rightEvent={() =>
-						setDate((prevDate) => {
-							if (currentView === "year") {
-								return new Date(
-									date.getFullYear() - 1,
-									date.getMonth(),
-									date.getDate()
-								)
-							}
-
-							if (currentView === "month") {
-								return new Date(
-									date.getFullYear(),
-									date.getMonth() - 1,
-									date.getDate()
-								)
-							}
-
-							if (currentView === "week") {
-								return new Date(
-									date.getFullYear(),
-									date.getMonth(),
-									date.getDate() - 7
-								)
-							}
-
-							return prevDate
-						})
-					}
-					leftEvent={() =>
-						setDate((prevDate) => {
-							if (currentView === "year") {
-								return new Date(
-									date.getFullYear() + 1,
-									date.getMonth(),
-									date.getDate()
-								)
-							}
-
-							if (currentView === "month") {
-								return new Date(
-									date.getFullYear(),
-									date.getMonth() + 1,
-									date.getDate()
-								)
-							}
-
-							if (currentView === "week") {
-								return new Date(
-									date.getFullYear(),
-									date.getMonth(),
-									date.getDate() + 7
-								)
-							}
-
-							return prevDate
-						})
-					}
-				>
+				<Controls setDate={setDate} date={date} currentView={currentView}>
 					<YearTitle date={date} />
 				</Controls>
 
@@ -136,18 +77,28 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 												/>
 											)
 										}
-										dayElement={(day) => {
-											const { date: dateDay, classNames } = day
-											const key = `${dateDay.getTime()}-${classNames[1]}`
-
-											if (customDay) return customDay(day)
-
+										weekElement={(week) => {
 											return (
-												<Day
-													key={key}
-													locale={locale}
-													day={day}
-													onClick={onClick}
+												<Week
+													key={week[0].date.getTime()}
+													calendarType={calendarType}
+													week={week}
+													date={date}
+													dayElement={(day) => {
+														const { date: dateDay, classNames } = day
+														const key = `${dateDay.getTime()}-${classNames[1]}`
+
+														if (customDay) return customDay(day)
+
+														return (
+															<Day
+																key={key}
+																locale={locale}
+																day={day}
+																onClick={onClick}
+															/>
+														)
+													}}
 												/>
 											)
 										}}
@@ -170,14 +121,29 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 									/>
 								)
 							}
-							dayElement={(day) => {
-								const { date: dateDay, classNames } = day
-								const key = `${dateDay.getTime()}-${classNames[1]}`
-
-								if (customDay) return customDay(day)
-
+							weekElement={(week) => {
 								return (
-									<Day key={key} locale={locale} day={day} onClick={onClick} />
+									<Week
+										key={week[0].date.getTime()}
+										calendarType={calendarType}
+										week={week}
+										date={date}
+										dayElement={(day) => {
+											const { date: dateDay, classNames } = day
+											const key = `${dateDay.getTime()}-${classNames[1]}`
+
+											if (customDay) return customDay(day)
+
+											return (
+												<Day
+													key={key}
+													locale={locale}
+													day={day}
+													onClick={onClick}
+												/>
+											)
+										}}
+									/>
 								)
 							}}
 						/>

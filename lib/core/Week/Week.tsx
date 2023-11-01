@@ -4,13 +4,15 @@ import {
 	daysToObject,
 	getFirstDayOfWeek,
 	getWeekDays,
+	getWeekNumber,
 } from "../../utils"
 import "./Week.css"
-import { MonthTitle } from "../../parts/MonthTitle"
 
+export type Week = DayObject[]
 export interface WeekProps {
 	calendarType: CalendarType
 	date: Date
+	week?: Week
 	dayElement: (day: DayObject) => React.ReactNode
 	customWeekDays?: React.ReactNode
 }
@@ -18,30 +20,27 @@ export interface WeekProps {
 export const Week = ({
 	calendarType,
 	date,
+	week,
 	customWeekDays,
 	dayElement,
 }: WeekProps) => {
 	const month = date.getMonth()
 
 	const getWeek = () => {
+		if (week) return week
+
 		const firstDayOfWeek = getFirstDayOfWeek(date, calendarType)
 
 		const weekDays = getWeekDays(date, firstDayOfWeek)
-
-		console.log(weekDays)
 
 		return weekDays.map((day) => daysToObject(month, day, calendarType))
 	}
 
 	return (
-		<div className="month" data-month={month}>
-			<MonthTitle date={date} />
+		<div className="week" data-week={getWeekNumber(week ? week[0].date : date)}>
+			{customWeekDays}
 
-			<div className="week">
-				{customWeekDays}
-
-				<div className="days">{getWeek().map((day) => dayElement(day))}</div>
-			</div>
+			<div className="days">{getWeek().map((day) => dayElement(day))}</div>
 		</div>
 	)
 }
