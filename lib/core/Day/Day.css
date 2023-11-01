@@ -1,33 +1,33 @@
 .day {
 	padding: 10px;
+}
 
-	&.day--previous-month {
-		color: #cccccc;
-	}
+.day.day--previous-month {
+	color: #cccccc;
+}
 
-	&.day--next-month {
-		color: #cccccc;
-	}
+.day.day--next-month {
+	color: #cccccc;
+}
 
-	&.day--current-month.day--today {
-		background-color: #c7c7c7;
-		color: #000000;
-	}
+.day.day--current-month.day--today {
+	background-color: #c7c7c7;
+	color: #000000;
+}
 
-	&.day--weekend {
-		background-color: #f9f9f9;
-	}
+.day.day--weekend {
+	background-color: #f9f9f9;
+}
 
-	&.day--hidden {
-		visibility: hidden;
-	}
+.day.day--hidden {
+	visibility: hidden;
+}
 
-	&:is(.day--current-month).day--clickable {
-		cursor: pointer;
-	}
+.day:is(.day--current-month).day--clickable {
+	cursor: pointer;
+}
 
-	&:is(.day--current-month).day--clickable:hover {
-		background-color: #4d4d4d;
-		color: #ffffff;
-	}
+.day:is(.day--current-month).day--clickable:hover {
+	background-color: #4d4d4d;
+	color: #ffffff;
 }

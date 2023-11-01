@@ -1,30 +1,39 @@
 .calendar {
-	.content {
-		display: flex;
-		flex-direction: column;
-	}
+	margin: 0 auto;
+}
 
-	.buttons {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 20px;
-		margin: 20px 0;
+.calendar.year-view {
+	max-width: 1920px;
+}
 
-		.views {
-			display: flex;
-			justify-content: center;
-			gap: 12px;
-		}
+.calendar.month-view {
+	max-width: 720px;
+}
 
-		.view-selected {
-			background-color: black;
-			color: white;
-			border: 1px solid transparent;
-		}
+.calendar.week-view {
+	max-width: 720px;
+}
 
-		.today-button {
-			padding: 4px 14px;
-		}
-	}
+.calendar .buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	margin: 20px 0;
+}
+
+.calendar .buttons .views {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+}
+
+.calendar .buttons .view-selected {
+	background-color: black;
+	color: white;
+	border: 1px solid transparent;
+}
+
+.calendar .buttons .today-button {
+	padding: 4px 14px;
 }

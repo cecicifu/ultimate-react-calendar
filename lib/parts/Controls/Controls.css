@@ -4,27 +4,27 @@
 	align-items: center;
 	gap: 0.2rem;
 	margin-top: 1rem;
+}
 
-	.right-button,
-	.left-button {
-		border: none;
-		padding: 0.5em;
-		background: transparent;
-		cursor: pointer;
-		font-weight: bold;
-		text-transform: uppercase;
-		transition: opacity 0.2s ease-in-out;
-	}
+.controls .right-button,
+.controls .left-button {
+	border: none;
+	padding: 0.5em;
+	background: transparent;
+	cursor: pointer;
+	font-weight: bold;
+	text-transform: uppercase;
+	transition: opacity 0.2s ease-in-out;
+}
 
-	.right-button:hover,
-	.left-button:hover {
-		opacity: 0.3;
-	}
+.controls .right-button:hover,
+.controls .left-button:hover {
+	opacity: 0.3;
+}
 
-	.right-icon,
-	.left-icon {
-		height: 100%;
-		width: 12px;
-		vertical-align: middle;
-	}
+.controls .right-icon,
+.controls .left-icon {
+	height: 100%;
+	width: 12px;
+	vertical-align: middle;
 }
