@@ -33,7 +33,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 	(
 		{
 			calendarType = CALENDAR_TYPES.ISO_8601,
-			className = "calendar",
+			className,
 			customDay,
 			customWeekDays,
 			startDate = new Date(),
@@ -51,8 +51,8 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 
 		const calendarClassnames = [
 			"calendar",
-			className,
 			`${currentView}-view`,
+			className,
 		].join(" ")
 
 		return (
