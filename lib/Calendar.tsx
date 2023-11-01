@@ -49,8 +49,14 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 		const [date, setDate] = useState(startDate)
 		const [currentView, setCurrentView] = useState<View>(view)
 
+		const calendarClassnames = [
+			"calendar",
+			className,
+			`${currentView}-view`,
+		].join(" ")
+
 		return (
-			<main ref={ref} className={className}>
+			<main ref={ref} className={calendarClassnames}>
 				<Controls setDate={setDate} date={date} currentView={currentView}>
 					<YearTitle date={date} />
 				</Controls>
