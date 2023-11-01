@@ -2,7 +2,7 @@
 
 The most complete React calendar for everyone.
 
-![Screenshot 2023-11-01 191824](https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/19d52583-3a24-415c-b669-1ea1d58ff7e2)
+![Screenshot 2023-11-01 233026](https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/aacf7ea1-fa85-4520-b0db-2f5cad0ec708)
 
 ---
 
