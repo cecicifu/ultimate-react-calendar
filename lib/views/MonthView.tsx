@@ -5,7 +5,7 @@ import { MonthTitle } from "../parts/MonthTitle"
 import { WeekDays } from "../parts/WeekDays"
 import { CalendarType } from "../utils/date"
 
-interface MonthViewProps {
+export interface MonthViewProps {
 	calendarType: CalendarType
 	customDay?: (day: DayObject) => React.ReactNode
 	customWeekDays?: React.ReactNode
