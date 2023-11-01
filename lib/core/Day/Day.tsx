@@ -56,7 +56,7 @@ export const Day = ({
 			data-date={dateString}
 			onClick={() => isClickable && onDayClick(getDayObject())}
 		>
-			<p>{dayNumber}</p>
+			<span>{dayNumber}</span>
 		</div>
 	)
 }
