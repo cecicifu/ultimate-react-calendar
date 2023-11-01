@@ -13,6 +13,7 @@ export type Week = DayObject[]
 export interface WeekProps {
 	calendarType: CalendarType
 	date: Date
+	monthName?: React.ReactNode
 	week?: Week
 	dayElement: (day: DayObject) => React.ReactNode
 	customWeekDays?: React.ReactNode
@@ -21,6 +22,7 @@ export interface WeekProps {
 export const Week = ({
 	calendarType,
 	date,
+	monthName,
 	week,
 	customWeekDays,
 	dayElement,
@@ -39,6 +41,8 @@ export const Week = ({
 
 	return (
 		<div className="week" data-week={getWeekNumber(week ? week[0].date : date)}>
+			{monthName}
+
 			{customWeekDays}
 
 			<div className="days">{getWeek().map((day) => dayElement(day))}</div>

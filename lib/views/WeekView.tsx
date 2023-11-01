@@ -1,5 +1,6 @@
 import { Day, DayObject, DayObjectWithElement } from "../core/Day"
 import { Week } from "../core/Week"
+import { MonthTitle } from "../parts/MonthTitle"
 import { WeekDays } from "../parts/WeekDays"
 import { CalendarType } from "../utils/date"
 
@@ -24,6 +25,7 @@ export const WeekView = ({
 }: WeekViewProps) => {
 	return (
 		<Week
+			monthName={<MonthTitle locale={locale} month={date.getMonth()} />}
 			calendarType={calendarType}
 			date={date}
 			customWeekDays={

@@ -7,6 +7,7 @@ import { DayObject, DayObjectWithElement } from "./core/Day"
 import { Controls } from "./parts/Controls"
 import { YearTitle } from "./parts/YearTitle"
 import { CALENDAR_TYPES, CalendarType } from "./utils/date"
+import { getNavigatorLocale } from "./utils/navigator"
 import { MonthView } from "./views/MonthView"
 import { WeekView } from "./views/WeekView"
 import { YearView } from "./views/YearView"
@@ -34,7 +35,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 			customDay,
 			customWeekDays,
 			startDate = new Date(),
-			locale = "en-US",
+			locale = getNavigatorLocale() ?? "en-US",
 			onClick,
 			view = "year",
 			weekDayFormat = "narrow",
@@ -50,6 +51,8 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 					<button onClick={() => setCurrentView("year")}>Year View</button>
 					<button onClick={() => setCurrentView("month")}>Month View</button>
 					<button onClick={() => setCurrentView("week")}>Week View</button>
+
+					<button onClick={() => setDate(new Date())}>Today</button>
 				</div>
 
 				<Controls setDate={setDate} date={date} currentView={currentView}>

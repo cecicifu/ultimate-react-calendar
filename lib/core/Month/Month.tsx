@@ -2,7 +2,6 @@ import "./Month.css"
 
 import React from "react"
 
-import { MonthTitle } from "../../parts/MonthTitle"
 import {
 	CalendarType,
 	daysToObject,
@@ -47,6 +46,7 @@ const getMonthWeeks = (
 export interface MonthProps {
 	calendarType: CalendarType
 	date: Date
+	monthName?: React.ReactNode
 	month?: number
 	weekElement: (day: Week) => React.ReactNode
 	customWeekDays?: React.ReactNode
@@ -55,6 +55,7 @@ export interface MonthProps {
 export const Month = ({
 	calendarType,
 	date,
+	monthName,
 	month = date.getMonth(),
 	customWeekDays,
 	weekElement,
@@ -63,7 +64,7 @@ export const Month = ({
 
 	return (
 		<div className="month" data-month={month}>
-			<MonthTitle month={month} />
+			{monthName}
 
 			{customWeekDays}
 

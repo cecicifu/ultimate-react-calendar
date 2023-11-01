@@ -2,6 +2,7 @@ import { Day, DayObject, DayObjectWithElement } from "../core/Day"
 import { Month } from "../core/Month"
 import { Week } from "../core/Week"
 import { Year } from "../core/Year"
+import { MonthTitle } from "../parts/MonthTitle"
 import { WeekDays } from "../parts/WeekDays"
 import { CalendarType } from "../utils/date"
 
@@ -32,6 +33,7 @@ export const YearView = ({
 
 				return (
 					<Month
+						monthName={<MonthTitle locale={locale} month={month} />}
 						key={monthNumber}
 						calendarType={calendarType}
 						month={month}
