@@ -2,8 +2,8 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 0.5rem;
-	margin: 1rem 0;
+	gap: 0.2rem;
+	margin-top: 1rem;
 
 	.right-button,
 	.left-button {
@@ -24,7 +24,7 @@
 	.right-icon,
 	.left-icon {
 		height: 100%;
-		width: 24px;
+		width: 12px;
 		vertical-align: middle;
 	}
 }

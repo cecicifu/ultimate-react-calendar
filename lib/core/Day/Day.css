@@ -10,12 +10,16 @@
 	}
 
 	&.day--current-month.day--today {
-		background-color: #808080;
-		color: white;
+		background-color: #c7c7c7;
+		color: #000000;
 	}
 
 	&.day--weekend {
-		background-color: #ebebeb;
+		background-color: #f9f9f9;
+	}
+
+	&.day--hidden {
+		visibility: hidden;
 	}
 
 	&:is(.day--current-month).day--clickable {
@@ -23,6 +27,7 @@
 	}
 
 	&:is(.day--current-month).day--clickable:hover {
-		background-color: #cccccc;
+		background-color: #4d4d4d;
+		color: #ffffff;
 	}
 }

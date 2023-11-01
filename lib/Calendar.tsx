@@ -22,6 +22,7 @@ export interface CalendarProps {
 	locale?: string
 	monthFormat?: Intl.DateTimeFormatOptions["month"]
 	onDayClick?: (day: DayObjectWithElement) => void
+	showNonCurrentDates?: boolean
 	view?: View
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
 }
@@ -39,6 +40,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 			locale = getNavigatorLocale() ?? "en-US",
 			monthFormat = "long",
 			onDayClick,
+			showNonCurrentDates = true,
 			view = "year",
 			weekDayFormat = "narrow",
 		},
@@ -49,17 +51,36 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 
 		return (
 			<main ref={ref} className={className}>
-				<div className="controls">
-					<button onClick={() => setCurrentView("year")}>Year View</button>
-					<button onClick={() => setCurrentView("month")}>Month View</button>
-					<button onClick={() => setCurrentView("week")}>Week View</button>
-
-					<button onClick={() => setDate(new Date())}>Today</button>
-				</div>
-
 				<Controls setDate={setDate} date={date} currentView={currentView}>
 					<YearTitle date={date} />
 				</Controls>
+
+				<div className="buttons">
+					<div className="views">
+						<button
+							className={currentView === "year" ? "view-selected" : ""}
+							onClick={() => setCurrentView("year")}
+						>
+							Year View
+						</button>
+						<button
+							className={currentView === "month" ? "view-selected" : ""}
+							onClick={() => setCurrentView("month")}
+						>
+							Month View
+						</button>
+						<button
+							className={currentView === "week" ? "view-selected" : ""}
+							onClick={() => setCurrentView("week")}
+						>
+							Week View
+						</button>
+					</div>
+
+					<button className="today-button" onClick={() => setDate(new Date())}>
+						Today
+					</button>
+				</div>
 
 				<div className="content">
 					{currentView === "year" && (
@@ -67,10 +88,11 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							calendarType={calendarType}
 							customDay={customDay}
 							customWeekDays={customWeekDays}
-							date={date}
+							startDate={date}
 							locale={locale}
 							monthFormat={monthFormat}
 							onDayClick={onDayClick}
+							showNonCurrentDates={showNonCurrentDates}
 							weekDayFormat={weekDayFormat}
 						/>
 					)}
@@ -80,10 +102,11 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							calendarType={calendarType}
 							customDay={customDay}
 							customWeekDays={customWeekDays}
-							date={date}
+							startDate={date}
 							locale={locale}
 							monthFormat={monthFormat}
 							onDayClick={onDayClick}
+							showNonCurrentDates={showNonCurrentDates}
 							weekDayFormat={weekDayFormat}
 						/>
 					)}
@@ -93,10 +116,11 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							calendarType={calendarType}
 							customDay={customDay}
 							customWeekDays={customWeekDays}
-							date={date}
+							startDate={date}
 							locale={locale}
 							monthFormat={monthFormat}
 							onDayClick={onDayClick}
+							showNonCurrentDates={showNonCurrentDates}
 							weekDayFormat={weekDayFormat}
 						/>
 					)}

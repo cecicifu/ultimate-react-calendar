@@ -17,9 +17,15 @@ export interface DayProps {
 	locale: string
 	day: DayObject
 	onDayClick?: (day: DayObjectWithElement) => void
+	showNonCurrentDates: boolean
 }
 
-export const Day = ({ locale, day, onDayClick }: DayProps) => {
+export const Day = ({
+	locale,
+	day,
+	onDayClick,
+	showNonCurrentDates,
+}: DayProps) => {
 	const { date: dateDay, classNames } = day
 
 	const dayRef = useRef<HTMLDivElement>(null)
@@ -28,6 +34,9 @@ export const Day = ({ locale, day, onDayClick }: DayProps) => {
 	const dateString = dateDay.toLocaleDateString(locale, DATE_FORMAT)
 
 	const isClickable = onDayClick && classNames.includes("day--current-month")
+
+	if (!showNonCurrentDates && !classNames.includes("day--current-month"))
+		classNames.push("day--hidden")
 
 	const classNamesStr = classNames.join(" ")
 	const clickableClass = isClickable ? " day--clickable" : ""

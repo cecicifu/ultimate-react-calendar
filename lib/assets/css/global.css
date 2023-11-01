@@ -17,3 +17,17 @@ body {
 abbr {
 	text-decoration: none;
 }
+
+button {
+	padding: 4px 14px;
+	background-color: #ffffff;
+	border: 1px solid #c7c7c7;
+	cursor: pointer;
+	transition: all 0.1s ease-in-out;
+}
+
+button:hover {
+	background-color: #434343;
+	color: #ffffff;
+	border: 1px solid transparent;
+}

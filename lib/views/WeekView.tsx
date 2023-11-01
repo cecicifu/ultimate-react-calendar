@@ -1,29 +1,34 @@
+import "../assets/css/global.css"
+
 import { Day, DayObject, DayObjectWithElement } from "../core/Day"
 import { Week } from "../core/Week"
 import { MonthTitle } from "../parts/MonthTitle"
 import { WeekDays } from "../parts/WeekDays"
-import { CalendarType } from "../utils/date"
+import { CALENDAR_TYPES, CalendarType } from "../utils/date"
+import { getNavigatorLocale } from "../utils/navigator"
 
 export interface WeekViewProps {
-	calendarType: CalendarType
+	calendarType?: CalendarType
 	customDay?: (day: DayObject) => React.ReactNode
 	customWeekDays?: React.ReactNode
-	date: Date
-	locale: string
-	monthFormat: Intl.DateTimeFormatOptions["month"]
+	startDate?: Date
+	locale?: string
+	monthFormat?: Intl.DateTimeFormatOptions["month"]
 	onDayClick?: (day: DayObjectWithElement) => void
+	showNonCurrentDates?: boolean
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
 }
 
 export const WeekView = ({
-	calendarType,
+	calendarType = CALENDAR_TYPES.ISO_8601,
 	customDay,
 	customWeekDays,
-	date,
-	locale,
-	monthFormat,
+	startDate = new Date(),
+	locale = getNavigatorLocale() ?? "en-US",
+	monthFormat = "long",
 	onDayClick,
-	weekDayFormat,
+	showNonCurrentDates = true,
+	weekDayFormat = "narrow",
 }: WeekViewProps) => {
 	return (
 		<Week
@@ -31,11 +36,11 @@ export const WeekView = ({
 				<MonthTitle
 					locale={locale}
 					monthFormat={monthFormat}
-					month={date.getMonth()}
+					month={startDate.getMonth()}
 				/>
 			}
 			calendarType={calendarType}
-			date={date}
+			date={startDate}
 			customWeekDays={
 				customWeekDays ?? (
 					<WeekDays
@@ -52,7 +57,13 @@ export const WeekView = ({
 				if (customDay) return customDay(day)
 
 				return (
-					<Day key={key} locale={locale} day={day} onDayClick={onDayClick} />
+					<Day
+						key={key}
+						locale={locale}
+						day={day}
+						onDayClick={onDayClick}
+						showNonCurrentDates={showNonCurrentDates}
+					/>
 				)
 			}}
 		/>
