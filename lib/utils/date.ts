@@ -180,11 +180,21 @@ export const getWeekNumber = (date: Date) => {
 
 export const getMonthNames = (
 	locale: string,
-	monthFormat: Intl.DateTimeFormatOptions["month"] = "long"
+	monthFormat: Intl.DateTimeFormatOptions["month"]
 ) => {
 	const date = new Date()
 
-	const { format } = new Intl.DateTimeFormat(locale, { month: monthFormat })
+	const { format: abbrFormat } = new Intl.DateTimeFormat(locale, {
+		month: monthFormat,
+	})
+	const { format: fullNameFormat } = new Intl.DateTimeFormat(locale, {
+		month: "long",
+	})
 
-	return [...Array(12).keys()].map((month) => format(date.setMonth(month)))
+	return [...Array(12).keys()].map((month) => {
+		return {
+			abbrName: abbrFormat(date.setMonth(month)),
+			fullName: fullNameFormat(date.setMonth(month)),
+		}
+	})
 }

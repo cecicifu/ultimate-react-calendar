@@ -20,6 +20,7 @@ export interface CalendarProps {
 	customWeekDays?: React.ReactNode
 	startDate?: Date
 	locale?: string
+	monthFormat?: Intl.DateTimeFormatOptions["month"]
 	onClick?: (day: DayObjectWithElement) => void
 	view?: View
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
@@ -36,6 +37,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 			customWeekDays,
 			startDate = new Date(),
 			locale = getNavigatorLocale() ?? "en-US",
+			monthFormat = "long",
 			onClick,
 			view = "year",
 			weekDayFormat = "narrow",
@@ -67,6 +69,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							customWeekDays={customWeekDays}
 							date={date}
 							locale={locale}
+							monthFormat={monthFormat}
 							onClick={onClick}
 							weekDayFormat={weekDayFormat}
 						/>
@@ -79,6 +82,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							customWeekDays={customWeekDays}
 							date={date}
 							locale={locale}
+							monthFormat={monthFormat}
 							onClick={onClick}
 							weekDayFormat={weekDayFormat}
 						/>
@@ -91,6 +95,7 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 							customWeekDays={customWeekDays}
 							date={date}
 							locale={locale}
+							monthFormat={monthFormat}
 							onClick={onClick}
 							weekDayFormat={weekDayFormat}
 						/>

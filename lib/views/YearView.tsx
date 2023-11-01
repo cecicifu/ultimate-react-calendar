@@ -12,6 +12,7 @@ export interface YearViewProps {
 	customWeekDays?: React.ReactNode
 	date: Date
 	locale: string
+	monthFormat: Intl.DateTimeFormatOptions["month"]
 	onClick?: (day: DayObjectWithElement) => void
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
 }
@@ -22,6 +23,7 @@ export const YearView = ({
 	customWeekDays,
 	date,
 	locale,
+	monthFormat,
 	onClick,
 	weekDayFormat,
 }: YearViewProps) => {
@@ -33,7 +35,13 @@ export const YearView = ({
 
 				return (
 					<Month
-						monthName={<MonthTitle locale={locale} month={month} />}
+						monthName={
+							<MonthTitle
+								locale={locale}
+								monthFormat={monthFormat}
+								month={month}
+							/>
+						}
 						key={monthNumber}
 						calendarType={calendarType}
 						month={month}

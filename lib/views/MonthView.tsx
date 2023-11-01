@@ -11,6 +11,7 @@ export interface MonthViewProps {
 	customWeekDays?: React.ReactNode
 	date: Date
 	locale: string
+	monthFormat: Intl.DateTimeFormatOptions["month"]
 	onClick?: (day: DayObjectWithElement) => void
 	weekDayFormat?: Intl.DateTimeFormatOptions["weekday"]
 }
@@ -21,12 +22,19 @@ export const MonthView = ({
 	customWeekDays,
 	date,
 	locale,
+	monthFormat,
 	onClick,
 	weekDayFormat,
 }: MonthViewProps) => {
 	return (
 		<Month
-			monthName={<MonthTitle locale={locale} month={date.getMonth()} />}
+			monthName={
+				<MonthTitle
+					locale={locale}
+					monthFormat={monthFormat}
+					month={date.getMonth()}
+				/>
+			}
 			calendarType={calendarType}
 			date={date}
 			customWeekDays={
