@@ -36,7 +36,7 @@ You can import the full calendar using:
 import { Calendar } from "ultimate-react-calendar"
 
 <>
-	<Calendar />
+  <Calendar />
 </>
 ```
 
@@ -46,9 +46,9 @@ or choose to only use one view:
 import { YearView, MonthView, WeekView } from "ultimate-react-calendar"
 
 <>
-	<YearView />
-	<MonthView />
-	<WeekView />
+  <YearView />
+  <MonthView />
+  <WeekView />
 </>
 ```
 
