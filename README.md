@@ -12,7 +12,7 @@ The most complete React calendar for everyone without dependencies.
 
 ## Requirements
 
-- React >= 18.2.x
+React 16.8 or later.
 
 ## Installation
 
@@ -34,8 +34,9 @@ You can import the full calendar using:
 
 ```jsx
 import { Calendar } from "ultimate-react-calendar"
+
 <>
-	<Calendar />
+  <Calendar />
 </>
 ```
 
@@ -43,10 +44,11 @@ or choose to only use one view:
 
 ```jsx
 import { YearView, MonthView, WeekView } from "ultimate-react-calendar"
+
 <>
-	<YearView />
-	<MonthView />
-	<WeekView />
+  <YearView />
+  <MonthView />
+  <WeekView />
 </>
 ```
 
