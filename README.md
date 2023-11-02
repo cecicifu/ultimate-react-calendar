@@ -1,4 +1,6 @@
-[![ultimate react calendar badge](https://deno.bundlejs.com/?q=ultimate-react-calendar&badge=detailed&badge-style=for-the-badge)](https://bundlejs.com/?q=ultimate-react-calendar)
+![npm](https://img.shields.io/npm/v/ultimate-react-calendar)
+![npm](https://img.shields.io/npm/dt/ultimate-react-calendar)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/ultimate-react-calendar)
 
 # Ultimate React Calendar
 
