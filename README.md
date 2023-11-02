@@ -1,3 +1,5 @@
+[![ultimate react calendar badge](https://deno.bundlejs.com/?q=ultimate-react-calendar&badge=detailed&badge-style=for-the-badge)](https://bundlejs.com/?q=ultimate-react-calendar)
+
 # Ultimate React Calendar
 
 The most complete React calendar for everyone without dependencies.
