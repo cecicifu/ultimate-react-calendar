@@ -1,23 +1,5 @@
-@font-face {
-	font-family: "Open Sans";
-	src: url(./assets/fonts/OpenSans-Regular.ttf) format("truetype");
-	font-weight: 400;
-}
-
-@font-face {
-	font-family: "Open Sans";
-	src: url(./assets/fonts/OpenSans-Medium.ttf) format("truetype");
-	font-weight: 500;
-}
-
-@font-face {
-	font-family: "Open Sans";
-	src: url(./assets/fonts/OpenSans-SemiBold.ttf) format("truetype");
-	font-weight: 600;
-}
-
 .calendar {
-	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-weight: 400;
 	box-sizing: border-box;
 	margin: 0 auto;
