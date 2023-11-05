@@ -1,5 +1,4 @@
 import "./Calendar.css"
-import "./assets/css/global.css"
 
 import { forwardRef, PropsWithoutRef, useState } from "react"
 

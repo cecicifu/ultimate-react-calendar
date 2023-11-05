@@ -1,5 +1,3 @@
-import "../assets/css/global.css"
-
 import { Day, DayObject, DayObjectWithElement } from "../core/Day"
 import { Week } from "../core/Week"
 import { DaysOfTheWeek } from "../parts/DaysOfTheWeek"
