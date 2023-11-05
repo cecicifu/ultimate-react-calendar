@@ -12,7 +12,6 @@
 	padding: 0.5em;
 	background: transparent;
 	cursor: pointer;
-	font-weight: bold;
 	text-transform: uppercase;
 	transition: opacity 0.2s ease-in-out;
 }
