@@ -1,8 +1,6 @@
-![version](https://img.shields.io/npm/v/ultimate-react-calendar)
-![minsize](https://img.shields.io/bundlephobia/min/ultimate-react-calendar)
-![minzipsize](https://img.shields.io/bundlephobia/minzip/ultimate-react-calendar)
+![version](https://img.shields.io/npm/v/ultimate-react-calendar/latest)
 ![downloads](https://img.shields.io/npm/dt/ultimate-react-calendar)
-![dependencies](https://badgen.net/bundlephobia/dependency-count/ultimate-react-calendar)
+![minzipsize](https://img.shields.io/bundlephobia/minzip/ultimate-react-calendar/latest)
 ![license](https://img.shields.io/github/license/cecicifu/ultimate-react-calendar)
 
 # Ultimate React Calendar
