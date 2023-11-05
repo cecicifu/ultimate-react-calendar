@@ -16,6 +16,9 @@
 	"files": [
 		"dist"
 	],
+	"exports": {
+		".": "./dist/index.js"
+	},
 	"keywords": [
 		"react",
 		"calendar",
@@ -28,6 +31,7 @@
 		"dev": "vite",
 		"start": "vite",
 		"build": "tsc && vite build",
+		"prepublish": "npm link ultimate-react-calendar",
 		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"lint:fix": "eslint . --fix --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
 		"preview": "vite preview"
