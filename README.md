@@ -4,7 +4,7 @@
 
 The most complete React calendar for everyone without dependencies.
 
-![Screenshot 2023-11-01 233026](https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/aacf7ea1-fa85-4520-b0db-2f5cad0ec708)
+![yearview](https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/825ff5a4-388a-4c90-b3d9-4acd5d75468b)
 
 ---
 
