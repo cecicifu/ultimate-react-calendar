@@ -10,8 +10,19 @@ import { getNavigatorLocale } from "./utils/navigator"
 import { MonthView } from "./views/MonthView"
 import { WeekView } from "./views/WeekView"
 import { YearView } from "./views/YearView"
+import { YearViewIcon, MonthViewIcon, WeekViewIcon } from "./parts/ViewIcons"
 
 export type CalendarView = "year" | "month" | "week"
+
+export type LocaleMessages = {
+	yearView?: string
+	monthView?: string
+	weekView?: string
+	today?: string
+	nextDate?: string
+	prevDate?: string
+}
+
 export interface CalendarProps {
 	calendarType?: CalendarType
 	className?: PropsWithoutRef<JSX.IntrinsicElements["main"]>["className"]
@@ -24,11 +35,12 @@ export interface CalendarProps {
 	showNonCurrentDates?: boolean
 	calendarView?: CalendarView
 	formatDaysOfTheWeek?: Intl.DateTimeFormatOptions["weekday"]
+	messages?: LocaleMessages
 }
 
-export type Ref = HTMLElement
+export type CalendarRef = HTMLElement
 
-const Calendar = forwardRef<Ref, CalendarProps>(
+export const Calendar = forwardRef<CalendarRef, CalendarProps>(
 	(
 		{
 			calendarType = CALENDAR_TYPES.ISO_8601,
@@ -36,18 +48,29 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 			customDay,
 			customDaysOfTheWeek,
 			initialDate = new Date(),
-			locale = getNavigatorLocale() ?? "en-US",
+			locale = getNavigatorLocale(),
 			formatMonth = "long",
 			onDayClick,
 			showNonCurrentDates = true,
 			calendarView = "year",
 			formatDaysOfTheWeek = "narrow",
+			messages = {
+				yearView: "Year View",
+				monthView: "Month View",
+				weekView: "Week View",
+				today: "Today",
+				nextDate: "Next date",
+				prevDate: "Previous date",
+			},
 		},
 		ref
 	) => {
 		const [date, setDate] = useState(initialDate)
 		const [currentCalendarView, setCurrentCalendarView] =
 			useState<CalendarView>(calendarView)
+
+		const { yearView, monthView, weekView, today, nextDate, prevDate } =
+			messages
 
 		const calendarClassnames = [
 			"calendar",
@@ -57,40 +80,48 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 
 		return (
 			<main ref={ref} className={calendarClassnames}>
-				<Controls
-					setDate={setDate}
-					date={date}
-					currentView={currentCalendarView}
-				>
-					<YearTitle date={date} />
-				</Controls>
-
-				<div className="buttons">
+				<header>
+					<div className="today-container">
+						<button
+							className="today-button"
+							onClick={() => setDate(new Date())}
+						>
+							{today}
+						</button>
+					</div>
+					<Controls
+						setDate={setDate}
+						date={date}
+						currentView={currentCalendarView}
+						nextDate={nextDate}
+						prevDate={prevDate}
+					>
+						<YearTitle date={date} />
+					</Controls>
 					<div className="views">
 						<button
+							title={yearView}
 							className={currentCalendarView === "year" ? "view-selected" : ""}
 							onClick={() => setCurrentCalendarView("year")}
 						>
-							Year View
+							<YearViewIcon />
 						</button>
 						<button
+							title={monthView}
 							className={currentCalendarView === "month" ? "view-selected" : ""}
 							onClick={() => setCurrentCalendarView("month")}
 						>
-							Month View
+							<MonthViewIcon />
 						</button>
 						<button
+							title={weekView}
 							className={currentCalendarView === "week" ? "view-selected" : ""}
 							onClick={() => setCurrentCalendarView("week")}
 						>
-							Week View
+							<WeekViewIcon />
 						</button>
 					</div>
-
-					<button className="today-button" onClick={() => setDate(new Date())}>
-						Today
-					</button>
-				</div>
+				</header>
 
 				<div className="content">
 					{currentCalendarView === "year" && (
@@ -139,5 +170,3 @@ const Calendar = forwardRef<Ref, CalendarProps>(
 		)
 	}
 )
-
-export default Calendar

@@ -9,6 +9,8 @@ export interface ControlsProps {
 	date: Date
 	currentView: CalendarView
 	children: React.ReactNode
+	nextDate?: string
+	prevDate?: string
 }
 
 export const Controls = ({
@@ -16,6 +18,8 @@ export const Controls = ({
 	date,
 	currentView,
 	children,
+	nextDate,
+	prevDate,
 }: ControlsProps) => {
 	const defaultRightEvent = () =>
 		setDate((prevDate) => {
@@ -53,13 +57,23 @@ export const Controls = ({
 
 	return (
 		<div className="controls">
-			<button onClick={defaultRightEvent} className="left-button">
-				<LeftIcon className="left-icon" />
-			</button>
-			{children}
-			<button onClick={defaultLeftEvent} className="right-button">
-				<RightIcon className="right-icon" />
-			</button>
+			<div className="year">
+				<button
+					title={prevDate}
+					onClick={defaultRightEvent}
+					className="left-button"
+				>
+					<LeftIcon className="left-icon" />
+				</button>
+				{children}
+				<button
+					title={nextDate}
+					onClick={defaultLeftEvent}
+					className="right-button"
+				>
+					<RightIcon className="right-icon" />
+				</button>
+			</div>
 		</div>
 	)
 }
