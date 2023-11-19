@@ -1,5 +1,11 @@
+export const FALLBACK_LOCALE = "en-US"
+
 export const getNavigatorLocale = () => {
-	if (!navigator) return
-	if (navigator.languages != undefined) return navigator.languages[0]
-	return navigator.language
+	try {
+		if (typeof navigator === "undefined") return
+		if (navigator.language) return navigator.language
+		if (navigator.languages.length > 0) return navigator.languages[0]
+	} catch {
+		return FALLBACK_LOCALE
+	}
 }
