@@ -1,5 +1,6 @@
 {
 	"name": "ultimate-react-calendar",
+	"description": "The most complete React calendar for everyone without dependencies.",
 	"version": "2.0.0",
 	"type": "module",
 	"license": "MIT",
