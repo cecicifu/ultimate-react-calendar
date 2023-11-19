@@ -2,28 +2,38 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	gap: 0.2rem;
-	margin-top: 1rem;
+	grid-column: 2;
+}
+
+.controls .year {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
 }
 
 .controls .right-button,
 .controls .left-button {
-	border: none;
-	padding: 0.5em;
+	border: 1px solid hsl(240 5.9% 90%);
 	background: transparent;
 	cursor: pointer;
 	text-transform: uppercase;
-	transition: opacity 0.2s ease-in-out;
+	opacity: 0.5;
+	transition-property: opacity, background-color;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+	color: hsl(240 5.9% 10%);
+	border-radius: calc(0.5rem - 2px);
 }
 
 .controls .right-button:hover,
 .controls .left-button:hover {
-	opacity: 0.3;
+	opacity: 1;
+	background-color: hsl(240 4.8% 95.9%);
 }
 
 .controls .right-icon,
 .controls .left-icon {
-	height: 100%;
-	width: 12px;
+	width: 1rem;
 	vertical-align: middle;
 }
