@@ -2,9 +2,11 @@
 
 # Ultimate React Calendar
 
-The most complete React calendar for everyone without dependencies.
+The most complete React calendar for everyone, without dependencies and fully typed.
 
-![yearview](https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/825ff5a4-388a-4c90-b3d9-4acd5d75468b)
+<div align="center">
+  <img src="https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/825ff5a4-388a-4c90-b3d9-4acd5d75468b">
+</div>
 
 ---
 
@@ -38,7 +40,7 @@ import { Calendar } from "ultimate-react-calendar"
 </>
 ```
 
-_If you import all views the calendar will come with some styles. These can always be overwritten._
+_If you import all the calendar will come with some styles. These can always be overwritten._
 
 Or choose to only import one view:
 
