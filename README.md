@@ -8,8 +8,6 @@ The most complete React calendar for everyone, without dependencies and fully ty
   <img src="https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/825ff5a4-388a-4c90-b3d9-4acd5d75468b">
 </div>
 
----
-
 ## Requirements
 
 **React 16** or later.
