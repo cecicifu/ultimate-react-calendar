@@ -4,6 +4,8 @@
 
 The most complete React calendar for everyone, without dependencies and fully typed.
 
+<a href="https://codesandbox.io/p/sandbox/ultimate-react-calendar-3rrcyr" target="_blank">Demo</a>
+
 <div align="center">
   <img src="https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/825ff5a4-388a-4c90-b3d9-4acd5d75468b">
 </div>
