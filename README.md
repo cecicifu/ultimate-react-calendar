@@ -1,10 +1,10 @@
-![version](https://img.shields.io/npm/v/ultimate-react-calendar/latest) ![downloads](https://img.shields.io/npm/dt/ultimate-react-calendar) ![minzipsize](https://img.shields.io/bundlephobia/minzip/ultimate-react-calendar/latest) ![license](https://img.shields.io/github/license/cecicifu/ultimate-react-calendar)
+![version](https://img.shields.io/npm/v/ultimate-react-calendar/latest) ![downloads](https://img.shields.io/npm/dt/ultimate-react-calendar) ![license](https://img.shields.io/github/license/cecicifu/ultimate-react-calendar)
 
 # Ultimate React Calendar
 
 The most complete React calendar for everyone, without dependencies and fully typed.
 
-<a href="https://codesandbox.io/p/sandbox/ultimate-react-calendar-3rrcyr" target="_blank">Demo</a>
+[Demo](https://codesandbox.io/p/sandbox/ultimate-react-calendar-3rrcyr)
 
 <div align="center">
   <img src="https://github.com/cecicifu/ultimate-react-calendar/assets/15237067/825ff5a4-388a-4c90-b3d9-4acd5d75468b">
